@@ -80,6 +80,14 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
      * @return Số lượng tài khoản
      */
     long countByOwner(String owner);
+
+   /**
+    * Đếm số lượng tài khoản có owner bắt đầu bằng một chuỗi nhất định.
+    * Dùng cho ví dụ Phantom Read.
+    * @param ownerPrefix Tiền tố của tên chủ sở hữu
+    * @return Số lượng tài khoản
+    */
+   long countByOwnerStartingWith(String ownerPrefix);
     
     /**
      * Custom query sử dụng JPQL để tìm tài khoản theo range số dư
